@@ -1,9 +1,0 @@
-Huffman coding is a lossless data compression algorithm. The idea is to assign variable-length binary codes to input characters, where the length of each code depends on how often the character appears in the text. Characters that occur very frequently get short codes, and characters that are rare get longer codes.
-
-The algorithm was developed by David Huffman in 1952 while he was a student at MIT. It is a classic example of a greedy algorithm: at every step it merges the two nodes with the smallest frequencies, and this local choice leads to a globally optimal prefix code.
-
-To build the code, we first count the frequency of every character. Then we place all characters in a min-heap ordered by frequency. We repeatedly remove the two smallest nodes, join them under a new parent whose frequency is the sum of the two, and push the parent back into the heap. When only one node remains, it is the root of the Huffman tree. Walking from the root to a leaf, writing 0 for a left turn and 1 for a right turn, gives the code for that character.
-
-Because no code is a prefix of any other code, the compressed bit stream can be decoded without any separators. We simply start at the root, follow the bits until we reach a leaf, output that character, and return to the root. This is why Huffman codes are called prefix-free codes.
-
-Huffman coding is used inside many real-world formats, such as ZIP and GZIP through the DEFLATE algorithm, and in image and audio standards like JPEG and MP3. Text files with a skewed distribution of letters, such as English prose, usually compress by forty to fifty percent.
